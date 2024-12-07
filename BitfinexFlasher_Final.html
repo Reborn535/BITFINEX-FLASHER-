@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitfinex Flasher</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+        h1 {
+            color: #ffcc00;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: #ff6600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 5px;
+        }
+        .btn:hover {
+            background-color: #ff4500;
+        }
+        .hidden {
+            display: none;
+        }
+        .wallet-list button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .wallet-list button:hover {
+            background-color: #444;
+        }
+    </style>
+    <script>
+        function showWallets() {
+            document.getElementById('wallets').classList.remove('hidden');
+        }
+
+        function promptLicense(walletName) {
+            const licenseKey = prompt(`Enter your license key to flash ${walletName}:`);
+            if (licenseKey === "Divine") {
+                alert(`${walletName} flashing initiated successfully with license key: ${licenseKey}`);
+            } else if (licenseKey === null) {
+                alert("License key entry cancelled.");
+            } else {
+                alert("Authorization failed. Invalid license key.");
+                const getLicense = confirm("Do you want to get a license key?");
+                if (getLicense) {
+                    window.open('https://wa.me/2348108374851', '_blank');
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Bitfinex Flasher</h1>
+        <p>Welcome to the ultimate flashing tool! Click below to get started.</p>
+        <button class="btn" onclick="showWallets()">Get Started</button>
+        
+        <div id="wallets" class="hidden wallet-list">
+            <button onclick="promptLicense('Bybit')">Flash Bybit</button>
+            <button onclick="promptLicense('CashApp')">Flash CashApp</button>
+            <button onclick="promptLicense('Binance')">Flash Binance</button>
+            <button onclick="promptLicense('Trust Wallet')">Flash Trust Wallet</button>
+        </div>
+    </div>
+</body>
+</html>
